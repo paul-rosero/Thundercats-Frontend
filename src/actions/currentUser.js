@@ -12,6 +12,12 @@ export const setCurrentUser = user => {
 //asynchronous action creators
 export const login = loginData => {
     return dispatch => {
-        return fetch("http://localhost:3001")
+        return fetch("http://localhost:3001", {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(loginData)
+        })
     }
 }
