@@ -10,40 +10,40 @@ export const setCurrentUser = user => {
 //asynchronous action creators
 export const currentUserLogin = loginData => {
     console.log(loginData)
-    return dispatch => {
-        return fetch("http://localhost:3001/api/v1/login", {
+    return async dispatch => {
+        const res = await fetch("http://localhost:3001/api/v1/login", {
+            credentials: "include",
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(loginData)
         })
-        .then(res => res.json())
-        .then(user => {
-            if (user.error) {
-                alert(user.error)
-            } else {
-                dispatch(setCurrentUser(user))
-            }
-        })
+        const user = await res.json()
+        if (user.error) {
+            alert(user.error)
+        }
+        else {
+            dispatch(setCurrentUser(user))
+        }
     }
 }
 
 export const getCurrentUser = () => {
-    return dispatch => {
-        return fetch("http://localhost:3001/api/v1/get_current_user", {
+    return async dispatch => {
+        const res = await fetch("http://localhost:3001/api/v1/get_current_user", {
+            credentials: "include",
             method: 'GET',
             headers: {
                 "Content-Type": "application/json"
             },
         })
-        .then(res => res.json())
-        .then(user => {
-            if (user.notice) {
-                alert(user.notice)
-            } else {
-                dispatch(setCurrentUser(user))
-            }
-        })
+        const user = await res.json()
+        if (user.notice) {
+            alert(user.notice)
+        }
+        else {
+            dispatch(setCurrentUser(user))
+        }
     }
 }
