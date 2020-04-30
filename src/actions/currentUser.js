@@ -15,7 +15,6 @@ export const clearCurrentUser = () => {
 
 //asynchronous action creators
 export const currentUserLogin = loginData => {
-    console.log(loginData)
     return async dispatch => {
         const res = await fetch("http://localhost:3001/api/v1/login", {
             credentials: "include",
@@ -30,7 +29,7 @@ export const currentUserLogin = loginData => {
             alert(user.error)
         }
         else {
-            dispatch(setCurrentUser(user))
+            dispatch(setCurrentUser(user.data))
         }
     }
 }
@@ -46,11 +45,12 @@ export const getCurrentUser = () => {
         })
         .then(res => res.json())
         .then(user => {
+            
             if (user.notice) {
             alert(user.notice)
         }
         else {
-            dispatch(setCurrentUser(user))
+            dispatch(setCurrentUser(user.data))
         }
         })
         
