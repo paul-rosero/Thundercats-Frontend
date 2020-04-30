@@ -1,3 +1,5 @@
+import { resetLoginForm } from './loginForm.js';
+
 //synchronous action creators
 export const setCurrentUser = user => {
     return {
@@ -30,6 +32,7 @@ export const currentUserLogin = loginData => {
         }
         else {
             dispatch(setCurrentUser(user.data))
+            dispatch(resetLoginForm())
         }
     }
 }
