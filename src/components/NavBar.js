@@ -7,15 +7,12 @@ const NavBar = ({ currentUser }) => {
     
     return (
        <div className="navbar" >
-            <>
-                <div>
-                    { currentUser ? <h3>Welcome {currentUser.attributes.name}!</h3> : <h3>Welcome Thundercat, Please login</h3>}
-                </div>
-                <div>
-                    { currentUser ? <Logout /> : <Login /> }
-                </div>
-            
-            </>
+            <div className="greeting">
+                { currentUser ? <h3>Welcome {currentUser.attributes.name}!</h3> : <h3>Welcome Thundercat, Please login</h3>}
+            </div>
+            <div className="nav-button">
+                { currentUser ? <Logout /> : <Login /> }
+            </div>        
        </div>
     )
 }
