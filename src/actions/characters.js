@@ -1,7 +1,7 @@
 //synchronous actions
-export const myChars = characters => {
+export const setMyChars = characters => {
     return {
-        type: "GET_MY_CHARACTERS",
+        type: "SET_MY_CHARACTERS",
         characters
     }
 }
@@ -18,7 +18,7 @@ export const getMyChars = () => {
             },
         })
         .then(res => res.json())
-        .then(response => { dispatch(myChars())})
+        .then(response => { dispatch(setMyChars(response.data))})
         
     }
 }
