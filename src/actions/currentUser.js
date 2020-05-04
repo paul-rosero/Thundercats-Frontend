@@ -48,15 +48,8 @@ export const getCurrentUser = () => {
         })
         .then(res => res.json())
         .then(user => {
-            
-            if (user.notice) {
-            alert(user.notice)
-        }
-        else {
             dispatch(setCurrentUser(user.data))
-        }
         })
-        
     }
 }
 
@@ -66,6 +59,10 @@ export const logout = () => {
         return fetch('http://localhost:3001/api/v1/logout', {
             credentials: "include",
             method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(user => {
+            alert(user.notice)
         })
     }
 }
