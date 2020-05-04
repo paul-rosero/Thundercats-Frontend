@@ -1,4 +1,5 @@
 import { resetLoginForm } from './loginForm.js';
+import { getMyChars } from './characters'
 //stateless component1
 //synchronous action creators
 export const setCurrentUser = user => {
@@ -13,7 +14,6 @@ export const clearCurrentUser = () => {
         type: "CLEAR_CURRENT_USER",
     }
 }
-
 
 //asynchronous action creators
 export const currentUserLogin = loginData => {
@@ -32,6 +32,7 @@ export const currentUserLogin = loginData => {
         }
         else {
             dispatch(setCurrentUser(user.data))
+            dispatch(getMyChars())
             dispatch(resetLoginForm())
         }
     }
@@ -49,7 +50,9 @@ export const getCurrentUser = () => {
         .then(res => res.json())
         .then(user => {
             dispatch(setCurrentUser(user.data))
+            dispatch(getMyChars())
         })
+        
     }
 }
 
