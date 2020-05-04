@@ -4,6 +4,7 @@ import '../App.css';
 import { connect } from 'react-redux';
 import { getCurrentUser} from '../actions/currentUser'
 import NavBar from '../components/NavBar'
+import CharactersContainer from './CharactersContainer';
 
 class App extends React.Component {
 
@@ -13,7 +14,11 @@ class App extends React.Component {
 
   render() {    
     return (
-      <NavBar />
+      <div>
+        <NavBar />
+        <CharactersContainer />
+      </div>
+      
     )
   }
 }
