@@ -3,7 +3,7 @@ import Characters from "../components/Characters.js";
 
 const CharactersContainer = () => {
     return(
-        <div>
+        <div className="CharactersContainer">
           <Characters />
         </div>
     )
