@@ -4,8 +4,9 @@ import '../App.css';
 import { connect } from 'react-redux';
 import { getCurrentUser} from '../actions/currentUser'
 import NavBar from '../components/NavBar'
+import Login from '../components/Login'
 import CharactersContainer from './CharactersContainer';
-
+import { Route } from 'react-router-dom'
 class App extends React.Component {
 
   componentDidMount() {
@@ -17,6 +18,11 @@ class App extends React.Component {
       <div className="App">
         <NavBar />
         <CharactersContainer />
+        <Route exact path='/login' component={Login} />
+        {/* <Route exact path='' component={} /> */}
+        {/* <Route exact path='' component={} /> */}
+        {/* <Route exact path='' component={} /> */}
+        {/* <Route exact path='' component={} /> */}
       </div>
       
     )
