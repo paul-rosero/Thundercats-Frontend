@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import CharacterCard from './CharacterCard'
 
 
-const Characters = () => {
+const Characters = ({characters}) => {
+    const charCard = characters.length > 0 ? characters.map(character => <CharacterCard key={character.id} characters={character} />) : null
     return (
-        <div>
-
+        <div className="Characters">
+           { charCard }
         </div>
     )
 }
