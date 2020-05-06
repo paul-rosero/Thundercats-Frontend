@@ -1,13 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CharactersContainer from './CharactersContainer';
-
-const ProfilePage = () => {
+  
+const ProfilePage = (currentUser) => {
     return (
         <div>
-            <h1>Hello</h1>
+            {/* <div className="greeting">
+                { currentUser ? <h3>Welcome {currentUser.attributes.name}!</h3> : <h3>Welcome Thundercat, Please login</h3>}
+            </div> */}
             <CharactersContainer/>
         </div>
+            
     )
 }
 
-export default ProfilePage
+const mapStateToProps = ({currentUser}) => {
+    return {currentUser}
+  }  
+
+export default connect(mapStateToProps)(ProfilePage)
