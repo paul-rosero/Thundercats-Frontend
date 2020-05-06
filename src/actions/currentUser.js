@@ -1,4 +1,5 @@
 import { resetLoginForm } from './loginForm.js';
+import { resetSignupForm } from './signupForm.js';
 import { getMyChars } from './characters'
 
 //stateless component1
@@ -19,6 +20,28 @@ export const clearCurrentUser = () => {
 
 
 //asynchronous action creators
+export const signup = signupData => {
+    return async dispatch => {
+        const res = await fetch("http://localhost:3001/api/v1/signup", {
+            credentials: "include",
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(signupData)
+        })
+        const user = await res.json()
+        if (user.error) {
+            alert(user.error)
+        }
+        else {
+            dispatch(setCurrentUser(user.data))
+            dispatch(getMyChars())
+            dispatch(resetSignupForm())
+        }
+    }
+}
+
 export const currentUserLogin = loginData => {
     return async dispatch => {
         const res = await fetch("http://localhost:3001/api/v1/login", {
