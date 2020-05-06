@@ -22,13 +22,16 @@ export const clearCurrentUser = () => {
 //asynchronous action creators
 export const signup = signupData => {
     return async dispatch => {
+        const userData ={
+            user: signupData
+        }
         const res = await fetch("http://localhost:3001/api/v1/signup", {
             credentials: "include",
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(signupData)
+            body: JSON.stringify(userData)
         })
         const user = await res.json()
         if (user.error) {
