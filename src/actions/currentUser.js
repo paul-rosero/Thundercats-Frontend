@@ -20,7 +20,7 @@ export const clearCurrentUser = () => {
 
 
 //asynchronous action creators
-export const signup = signupData => {
+export const signup = (signupData,history) => {
     return async dispatch => {
         const userData ={
             user: signupData
@@ -41,11 +41,13 @@ export const signup = signupData => {
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
             dispatch(resetSignupForm())
+            history.push('/')
         }
     }
 }
 
-export const currentUserLogin = loginData => {
+export const currentUserLogin = (loginData, history) => {
+    console.log(loginData)
     return async dispatch => {
         const res = await fetch("http://localhost:3001/api/v1/login", {
             credentials: "include",
@@ -63,11 +65,12 @@ export const currentUserLogin = loginData => {
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
             dispatch(resetLoginForm())
+            history.push('/')
         }
     }
 }
 
-export const getCurrentUser = () => {
+export const getCurrentUser = (history) => {
     return  dispatch => {
         return fetch("http://localhost:3001/api/v1/get_current_user", {
             credentials: "include",
@@ -83,6 +86,7 @@ export const getCurrentUser = () => {
             } else {
                 dispatch(setCurrentUser(user.data))
                 dispatch(getMyChars())
+                // history.push('/')
             }
         })
         
