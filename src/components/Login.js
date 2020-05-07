@@ -20,17 +20,17 @@ const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
     }
 
     return (
-        <div>
+        <div className="login-form">
             {loginGreetings()}
-            <form onSubmit={handleOnSubmit}>
-            <label>Username: </label>
-            <input name="username" type="text" onChange={handleInputChange} /><br/>
+            <form name="login-form" onSubmit={handleOnSubmit}>
+                <label>Username: </label>
+                <input name="username" type="text" onChange={handleInputChange} />
 
-            <label>Password: </label>
-            <input name="password" type="text" onChange={handleInputChange} /><br />
+                <label>Password: </label>
+                <input name="password" type="text" onChange={handleInputChange} />
             
-            <input type="submit" value="Log In" />
-        </form> 
+                <input type="submit" value="Log In" />
+            </form> 
         </div>
         
     )

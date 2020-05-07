@@ -25,16 +25,16 @@ const Signup = ({signupForm, updateSignupForm, signup, history }) => {
         <div className="signup-form">
             { signupGreetings() }
             <form name="signup-form" onSubmit={handleOnSubmit}>
-                <label for="name">Name: </label>
+                <label>Name: </label>
                 <input name="name" type="text" onChange={handleInputChange} /><br/>
 
-                <label for="email">Email: </label>
+                <label>Email: </label>
                 <input name="email" type="text" onChange={handleInputChange} /><br/>
 
-                <label for="username">Username: </label>
+                <label>Username: </label>
                 <input name="username" type="text" onChange={handleInputChange} /><br/>
 
-                <label for="password">Password: </label>
+                <label>Password: </label>
                 <input name="password" type="text" onChange={handleInputChange} /><br />
 
                 <input type="submit" value="Sign Up" />
