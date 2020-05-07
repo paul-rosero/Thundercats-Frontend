@@ -5,6 +5,7 @@ import { signup } from '../actions/currentUser.js'
 import { signupGreetings } from '../containers/PageGreetings.js';
 
 
+
 const Signup = ({signupForm, updateSignupForm, signup, history }) => {
   
     const handleInputChange = event => {
@@ -21,19 +22,19 @@ const Signup = ({signupForm, updateSignupForm, signup, history }) => {
     }
    
     return (
-        <div>
+        <div className="signup-form">
             { signupGreetings() }
-            <form onSubmit={handleOnSubmit}>
-                <label>Name: </label>
+            <form name="signup-form" onSubmit={handleOnSubmit}>
+                <label for="name">Name: </label>
                 <input name="name" type="text" onChange={handleInputChange} /><br/>
 
-                <label>Email: </label>
+                <label for="email">Email: </label>
                 <input name="email" type="text" onChange={handleInputChange} /><br/>
 
-                <label>Username: </label>
+                <label for="username">Username: </label>
                 <input name="username" type="text" onChange={handleInputChange} /><br/>
 
-                <label>Password: </label>
+                <label for="password">Password: </label>
                 <input name="password" type="text" onChange={handleInputChange} /><br />
 
                 <input type="submit" value="Sign Up" />
