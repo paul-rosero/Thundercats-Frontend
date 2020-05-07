@@ -2,11 +2,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../actions/currentUser.js'
+import { withRouter } from 'react-router-dom';
 
-const Logout = ({ logout }) => {
+const Logout = ({ logout, history }) => {
     return (
-       <button onClick={ logout } className="logoutButton" >Logout</button>
+        <button onClick={() => {
+            logout()
+            history.push('/')
+        } } className="logoutButton" >Logout</button>
     )
 }
 
-export default connect(null, { logout })(Logout);
+export default withRouter(connect(null, { logout })(Logout));
