@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateLoginForm } from '../actions/loginForm.js'
 import { currentUserLogin } from '../actions/currentUser.js'
+import { loginGreetings } from '../containers/PageGreetings'
 
 const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
     
@@ -19,7 +20,9 @@ const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
     }
 
     return (
-        <form onSubmit={handleOnSubmit}>
+        <div>
+            {loginGreetings()}
+            <form onSubmit={handleOnSubmit}>
             <label>Username: </label>
             <input name="username" type="text" onChange={handleInputChange} /><br/>
 
@@ -27,7 +30,9 @@ const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
             <input name="password" type="text" onChange={handleInputChange} /><br />
             
             <input type="submit" value="Log In" />
-        </form>
+        </form> 
+        </div>
+        
     )
 }
 
