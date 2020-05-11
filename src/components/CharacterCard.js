@@ -1,9 +1,12 @@
 import React from 'react';
 
-const CharacterCard = ({characters}) => {
+
+const CharacterCard = (props) => {
+ 
+  console.log('props', props)
     return (
       <div className="CharacterCard">
-        <p>{characters.attributes.name}</p>
+        <p>hi</p>
       </div>
     )    
 }

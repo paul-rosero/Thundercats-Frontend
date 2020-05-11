@@ -8,6 +8,8 @@ import Signup from '../components/Signup';
 import ProfilePage from './ProfilePage.js';
 import Home from './Home';
 import { Route, Switch, withRouter } from 'react-router-dom'
+import CharacterCard from '../components/CharacterCard';
+import Characters from '../components/Characters';
 
 class App extends React.Component {
 
@@ -21,6 +23,7 @@ class App extends React.Component {
       <div className="App">  
         { loggedIn ? <NavBar/> : null }
         <Switch>
+          <Route exact path='/characters/:name' component={CharacterCard} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/' render={(props) => loggedIn ? <ProfilePage {...props}/> : <Home {...props} />} />

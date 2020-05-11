@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import CharacterCard from './CharacterCard'
 
 const Characters = ({characters}) => {
-    const charCard = characters.length > 0 ? characters.map(character => <CharacterCard key={character.id} characters={character} />) : ""
+    const charCard = characters.map(character => <CharacterCard key={character.id} character={character} />) 
+     console.log('charCard', charCard)
     return (
         <div className="Characters">
+       
            { charCard }
         </div>
     )
