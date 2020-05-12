@@ -1,8 +1,6 @@
 import React from 'react';
 
 const CharacterCard = ({location}) => {
- 
-  console.log('location', location.state.characters)
     return (
       <div className="CharacterCard">
         <p>Name: {location.state.characters.attributes.name}</p>
