@@ -4,13 +4,11 @@ import users from './reducers/users.js';
 import currentUser from './reducers/currentUser.js';
 import loginForm from './reducers/loginForm.js';
 import signupForm from './reducers/signupForm.js'
-import characters from './reducers/characters.js'
 
 const reducer = combineReducers({
     users,
     currentUser,
     loginForm,
-    characters,
     signupForm
   })
   
