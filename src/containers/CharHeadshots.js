@@ -1,20 +1,29 @@
 import React from 'react'
 import { Link} from 'react-router-dom'
 
-const CharHeadshots = () => {
-    // const charPicArr = [
-    //   <Link to='/characters/lion-o' ><img key="lion-o" src={process.env.PUBLIC_URL + '/character_images/lion-o.jpg'} alt="lion-o" /></Link>,
-    //   <Link to='/characters/tygra' ><img key="tygra" src={process.env.PUBLIC_URL + '/character_images/tygra.jpg'} alt="tygra" /></Link>,
-    //   <Link to='/characters/panthro' ><img key="panthro" src={process.env.PUBLIC_URL + '/character_images/panthro.jpg'} alt="panthro" /></Link>,
-    //   <Link to='/characters/cheetara' ><img key="cheetara" src={process.env.PUBLIC_URL + '/character_images/cheetara.jpg'} alt="cheetara" /></Link>
-    //   ]
+const CharHeadshots = (props) => {
     return (
         <div>
-           <Link to='/characters/lion-o' ><img key="lion-o" src={process.env.PUBLIC_URL + '/character_images/lion-o.jpg'} alt="lion-o" /></Link>
-           <Link to='/characters/tygra' ><img key="tygra" src={process.env.PUBLIC_URL + '/character_images/tygra.jpg'} alt="tygra" /></Link>
-           <Link to='/characters/panthro' ><img key="panthro" src={process.env.PUBLIC_URL + '/character_images/panthro.jpg'} alt="panthro" /></Link>
-           <Link to='/characters/cheetara' ><img key="cheetara" src={process.env.PUBLIC_URL + '/character_images/cheetara.jpg'} alt="cheetara" /></Link>
-            {/* { charPicArr } */}
+           <Link to={{
+               pathname:'/characters/lion-o', 
+               state: {characters: props.currentUser.relationships.characters[0]}
+            }}><img key="lion-o" src={process.env.PUBLIC_URL + '/character_images/lion-o.jpg'} alt="lion-o" /></Link>
+
+           <Link to={{
+               pathname: '/characters/tygra',
+               state: {characters: props.currentUser.relationships.characters[1]}
+           }}><img key="tygra" src={process.env.PUBLIC_URL + '/character_images/tygra.jpg'} alt="tygra" /></Link>
+           
+           <Link to={{
+               pathname: '/characters/panthro',
+               state:{characters: props.currentUser.relationships.characters[2]}
+            }}><img key="panthro" src={process.env.PUBLIC_URL + '/character_images/panthro.jpg'} alt="panthro" /></Link>
+           
+           <Link to={{
+               pathname: '/characters/cheetara',
+               state: {characters: props.currentUser.relationships.characters[3]}
+            }}><img key="cheetara" src={process.env.PUBLIC_URL + '/character_images/cheetara.jpg'} alt="cheetara" /></Link>
+            
         </div>
     )
 }
