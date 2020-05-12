@@ -8,7 +8,12 @@ const ProfilePage = ({currentUser}) => {
             <div className="greeting">
                 { currentUser ? <h3>Welcome {currentUser.attributes.name}!</h3> : <h3>Welcome Thundercat, Please login</h3>}
             </div>
-            <CharHeadshots currentUser={currentUser}/>
+            <table>
+                <tbody>
+                    <CharHeadshots currentUser={currentUser}/>
+                </tbody>
+            </table>
+            
         </div>
             
     )
