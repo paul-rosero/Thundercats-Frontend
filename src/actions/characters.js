@@ -9,16 +9,16 @@ export const setMyChars = characters => {
 //asynchronous actions 
 
 export const getMyChars = () => {
-    return dispatch => {
-        return fetch("http://localhost:3001/api/v1/characters", {
+    return async dispatch => {
+        const charRes = await fetch("http://localhost:3001/api/v1/characters", {
             credentials: "include",
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             },
         })
-        .then(res => res.json())
-        .then(response => { dispatch(setMyChars(response.data))})
+        const response = await charRes.json()
+        dispatch(setMyChars(response.data))
         
     }
 }

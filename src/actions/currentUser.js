@@ -47,7 +47,6 @@ export const signup = (signupData,history) => {
 }
 
 export const currentUserLogin = (loginData, history) => {
-    console.log(loginData)
     return async dispatch => {
         const res = await fetch("http://localhost:3001/api/v1/login", {
             credentials: "include",
@@ -70,39 +69,36 @@ export const currentUserLogin = (loginData, history) => {
     }
 }
 
-export const getCurrentUser = (history) => {
-    return  dispatch => {
-        return fetch("http://localhost:3001/api/v1/get_current_user", {
+export const getCurrentUser = () => {
+    return  async dispatch => {
+        const res = await fetch("http://localhost:3001/api/v1/get_current_user", {
             credentials: "include",
             method: 'GET',
             headers: {
                 "Content-Type": "application/json"
             },
-        })
-        .then(res => res.json())
-        .then(user => {
-            if (user.notice) {
-                alert(user.notice)
-            } else {
-                dispatch(setCurrentUser(user.data))
-                dispatch(getMyChars())
-                // history.push('/')
-            }
-        })
+        });
+        const user = await res.json();
+        if (user.notice) {
+            alert(user.notice);
+        }
+        else {
+            dispatch(setCurrentUser(user.data));
+            dispatch(getMyChars());
+        
+        }
         
     }
 }
 
 export const logout = () => {
-    return dispatch => {
+    return async dispatch => {
         dispatch(clearCurrentUser())
-        return fetch('http://localhost:3001/api/v1/logout', {
+        const res = await fetch('http://localhost:3001/api/v1/logout', {
             credentials: "include",
             method: "DELETE"
-        })
-        .then(res => res.json())
-        .then(user => {
-            alert(user.notice)
-        })
+        });
+        const user = await res.json();
+        alert(user.notice);
     }
 }
