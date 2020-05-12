@@ -5,27 +5,18 @@ import CharacterCard from './CharacterCard'
 
 const Characters = ({characters}) => {
     const charCard = characters.map(character => <CharacterCard key={character.id} character={character} />) 
-     console.log('charCard', charCard)
+    
     return (
         <div className="Characters">
-       
            { charCard }
         </div>
     )
 }
 
-/*
 const mapStateToProps = ({currentUser}) => {
     return {
-        characters: currentUser.attributes.characters
-    }
-}
-*/
-
-const mapStateToProps = ({characters}) => {
-    return {
-        characters
+        characters: currentUser.relationships.characters
     }
 }
 
-export default connect(mapStateToProps)(Characters);
+export default connect(mapStateToProps,)(Characters);
