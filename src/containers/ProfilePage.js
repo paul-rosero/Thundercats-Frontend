@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CharactersContainer from './CharactersContainer';
   
-const ProfilePage = (currentUser) => {
+const ProfilePage = ({currentUser}) => {
     return (
         <div className="profile-page">
-            {/* <div className="greeting">
+            <div className="greeting">
                 { currentUser ? <h3>Welcome {currentUser.attributes.name}!</h3> : <h3>Welcome Thundercat, Please login</h3>}
-            </div> */}
+            </div>
             <CharactersContainer/>
         </div>
             
