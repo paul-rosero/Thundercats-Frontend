@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import CharactersContainer from './CharactersContainer';
+import CharHeadshots from './CharHeadshots';
   
 const ProfilePage = ({currentUser}) => {
     return (
@@ -8,7 +8,7 @@ const ProfilePage = ({currentUser}) => {
             <div className="greeting">
                 { currentUser ? <h3>Welcome {currentUser.attributes.name}!</h3> : <h3>Welcome Thundercat, Please login</h3>}
             </div>
-            <CharactersContainer/>
+            <CharHeadshots currentUser={currentUser}/>
         </div>
             
     )
