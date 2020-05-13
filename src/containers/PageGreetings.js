@@ -17,3 +17,13 @@ export const loginGreetings = () => {
         </div>
     )
 }
+
+export const profileGreetings = (currentUser) => {
+    return (
+        <div className="profile-greetings">
+            { currentUser ? <h2>Welcome {currentUser.attributes.name}!</h2> : <h2>Welcome Thundercat, Please login</h2>}
+        </div>
+    )
+}
+
+
