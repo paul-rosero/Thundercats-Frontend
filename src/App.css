@@ -32,8 +32,21 @@
   }
 }
 
-.navbar {
+.Navbar {
   display: flex;
   flex-direction: column;
+}
+
+.characters-picture-table {
+  column-count: auto;
+  column-width: 8rem;
+  border-spacing: 0px;
+  background: rgb(134, 27, 27);
+  width: 100%;
+}
+
+.characters-picture-container {
+  max-width: 100vw;
+  position: relative;
 }
 
