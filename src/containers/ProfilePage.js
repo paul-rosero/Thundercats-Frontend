@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CharHeadshots from './CharHeadshots';
-import UserInfo from '../components/UserInfo';
+import DisplayUserInfo from '../components/DisplayUserInfo';
 import { profileGreetings } from './PageGreetings';
   
 const ProfilePage = ({currentUser}) => {
     return (
         <div className="profile-page">
             { profileGreetings(currentUser) } 
-             <UserInfo currentUser={currentUser} />
+             <DisplayUserInfo currentUser={currentUser} />
             <CharHeadshots currentUser={currentUser}/>
         </div>
             

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserInfo = ({currentUser}) => {
+const DisplayUserInfo = ({currentUser}) => {
     return (
         <div className="current-user-information" >
             <p>Username: {currentUser.attributes.username}</p>
@@ -10,4 +10,4 @@ const UserInfo = ({currentUser}) => {
     )
 }
 
-export default UserInfo
+export default DisplayUserInfo
