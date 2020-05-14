@@ -20,7 +20,7 @@ export const clearCurrentUser = () => {
 
 
 //asynchronous action creators
-export const signup = (signupData,history) => {
+export const signup = (signupData, history) => {
     return async dispatch => {
         const userData ={
             user: signupData
@@ -38,10 +38,11 @@ export const signup = (signupData,history) => {
             alert(user.error)
         }
         else {
+            console.log('user.data', user.data)
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
             dispatch(resetSignupForm())
-            history.push('/')
+            history.push(`/users/${user.data.attributes.name}`)
         }
     }
 }
@@ -64,7 +65,7 @@ export const currentUserLogin = (loginData, history) => {
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
             dispatch(resetLoginForm())
-            history.push('/')
+            history.push(`/users/${user.data.attributes.name}`)
         }
     }
 }
@@ -94,11 +95,9 @@ export const getCurrentUser = () => {
 export const logout = () => {
     return async dispatch => {
         dispatch(clearCurrentUser())
-        const res = await fetch('http://localhost:3001/api/v1/logout', {
+        await fetch('http://localhost:3001/api/v1/logout', {
             credentials: "include",
             method: "DELETE"
         });
-        const user = await res.json();
-        alert(user.notice);
     }
 }
