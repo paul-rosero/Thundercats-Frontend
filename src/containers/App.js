@@ -19,7 +19,7 @@ class App extends React.Component {
     const { loggedIn } = this.props   
     return (
       <div className="App">  
-        { loggedIn ? <NavBar/> : null }
+        { loggedIn ? <NavBar location={this.props.location} /> : null }
         <Switch>
           <Route exact path='/characters/:name' component={CharacterCard} />
           <Route exact path='/login' component={Login} />
