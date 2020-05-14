@@ -9,7 +9,7 @@ const NavBar = ({  loggedIn }) => {
     return (
        <div className="navbar" >
            {/* <NavLink exact to="/fav-characters">Fav Characters</NavLink> */}
-           {/* <NavLink exact to="/" ></NavLink> */}
+           {/* <NavLink exact to=`/users/${currentUser.attributes.name}/update-user-info` >Update My Info</NavLink> */}
            {loggedIn ? <Logout/> : null}
        </div>
     )
