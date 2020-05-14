@@ -5,11 +5,12 @@ import { currentUserLogin } from '../actions/currentUser.js'
 import { loginGreetings } from '../containers/PageGreetings'
 
 const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
-    
+    const { username, password } = loginForm
     const handleInputChange = event => {
+        const { name, value } = event.target
         const updatedFormInfo = {
             ...loginForm,
-            [event.target.name]: event.target.value
+            [name]: value
         }
       updateLoginForm(updatedFormInfo)
     }
@@ -24,10 +25,10 @@ const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
             {loginGreetings()}
             <form name="login-form" onSubmit={handleOnSubmit}>
                 <label>Username: </label>
-                <input name="username" type="text" onChange={handleInputChange} />
+                <input name="username" type="text" value={username} onChange={handleInputChange} />
 
                 <label>Password: </label>
-                <input name="password" type="text" onChange={handleInputChange} />
+                <input name="password" type="text" value={password} onChange={handleInputChange} />
             
                 <input type="submit" value="Log In" />
             </form> 
