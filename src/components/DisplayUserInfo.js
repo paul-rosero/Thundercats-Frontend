@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DisplayUserInfo = () => {
+const DisplayUserInfo = ({currentUser}) => {
     return (
         <div className="current-user-information" >
             <p>Username: {currentUser.attributes.username}</p>
