@@ -1,15 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import Logout from './Logout'
 // import Login from './Login'
 
 
-const NavBar = ({  loggedIn }) => {
+const NavBar = ({ currentUser, loggedIn }) => {
     return (
        <div className="navbar" >
            {/* <NavLink exact to="/fav-characters">Fav Characters</NavLink> */}
-           {/* <NavLink exact to=`/users/${currentUser.attributes.name}/update-user-info` >Update My Info</NavLink> */}
+           <NavLink exact to={{
+               pathname: `/users/${currentUser.id}/edit`,
+               state: currentUser
+            }} >Update My Info</NavLink>
            {loggedIn ? <Logout/> : null}
        </div>
     )
