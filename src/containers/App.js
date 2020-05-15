@@ -24,8 +24,7 @@ class App extends React.Component {
           <Route exact path='/characters/:name' component={ CharacterCard } />
           <Route exact path='/login' component={ Login } />
           <Route exact path='/signup' component={ Signup } />
-          <Route exact path='/users/:name' component={ProfilePage}/>
-          <Route exact path='/' component={ Home }/>
+          { loggedIn ?  <Route exact path='/users/:name' component={ProfilePage}/> : <Route exact path='/' component={ Home }/> }
           {/* <Route exact path='' component={} /> */}
           {/* <Route exact path='' component={} /> */}
         </Switch>  
