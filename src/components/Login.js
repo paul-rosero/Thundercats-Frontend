@@ -6,6 +6,7 @@ import { loginGreetings } from '../containers/PageGreetings'
 
 const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
     const { username, password } = loginForm
+    
     const handleInputChange = event => {
         const { name, value } = event.target
         const updatedFormInfo = {
@@ -33,7 +34,6 @@ const Login = ({ loginForm, updateLoginForm, currentUserLogin, history }) => {
                 <input type="submit" value="Log In" />
             </form> 
         </div>
-        
     )
 }
 
