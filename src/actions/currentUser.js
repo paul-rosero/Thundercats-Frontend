@@ -17,8 +17,6 @@ export const clearCurrentUser = () => {
     }
 }
 
-
-
 //asynchronous action creators
 export const signup = (signupData, history) => {
     return async dispatch => {
@@ -38,7 +36,6 @@ export const signup = (signupData, history) => {
             alert(user.error)
         }
         else {
-            console.log('user.data', user.data)
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
             dispatch(resetSignupForm())
@@ -86,9 +83,7 @@ export const getCurrentUser = () => {
         else {
             dispatch(setCurrentUser(user.data));
             dispatch(getMyChars());
-        
         }
-        
     }
 }
 
