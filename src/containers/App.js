@@ -20,11 +20,11 @@ class App extends React.Component {
     return (
       <div className="App">  
         { loggedIn ? <NavBar location={this.props.location} /> : null }
+        { loggedIn ?  <Route exact path='/users/:name' component={ProfilePage}/> : <Route exact path='/' component={ Home }/> }
         <Switch>
           <Route exact path='/characters/:name' component={ CharacterCard } />
           <Route exact path='/login' component={ Login } />
           <Route exact path='/signup' component={ Signup } />
-          { loggedIn ?  <Route exact path='/users/:name' component={ProfilePage}/> : <Route exact path='/' component={ Home }/> }
           {/* <Route exact path='' component={} /> */}
           {/* <Route exact path='' component={} /> */}
         </Switch>  
