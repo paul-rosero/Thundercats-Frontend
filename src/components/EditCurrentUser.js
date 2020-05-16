@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateEditForm, edit } from '../actions/editForm';
 import { editGreetings } from '../containers/PageGreetings'
-import { updateEditForm } from '../actions/editForm'
+
 
 export class EditCurrentUser extends Component {
 
     handleInputChange = event => {
-        console.log(event.targ)
         const { name, value } = event.target
-      updateEditForm(name, value)
+        updateEditForm(name, value)
     }
 
     // handleSubmit = (formData) => {
@@ -19,7 +19,8 @@ export class EditCurrentUser extends Component {
     //     }, history)
     //   }
 
-    render() {
+    render(edit) {
+        
         return (
             <div className="edit-form">
                 { editGreetings() }
@@ -33,15 +34,16 @@ export class EditCurrentUser extends Component {
                     <label>Username: </label>
                     <input name="username" type="text" value={this.username} onChange={this.handleInputChange} /><br/>
 
-                    <input type="submit" value="Sign Up" />
+                    <input type="submit" value="Edit" />
                 </form>
             </div>
         )
     }
 }
 
-const mapDispatchToProps = {
-    
+const mapStateToProps = (state) => {
+    console.log('state', state)
+    // return { editForm }
 }
 
-export default connect(null, mapDispatchToProps)(EditCurrentUser)
+export default connect(mapStateToProps, { updateEditForm, edit })(EditCurrentUser)
