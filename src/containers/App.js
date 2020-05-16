@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn } = this.props
+    const { loggedIn, currentUser } = this.props
     return (
       <div className="App">  
         { loggedIn ? <NavBar location={this.props.location} /> : null }
@@ -26,7 +26,9 @@ class App extends React.Component {
           <Route exact path='/characters/:name' component={ CharacterCard } />
           <Route exact path='/login' component={ Login } />
           <Route exact path='/signup' component={ Signup } />
-          <Route exact path='/users/:name/edit' component={ EditCurrentUser} { ...this.props } />
+          <Route exact path='/users/:name/edit' render={(props) => {
+            return <EditCurrentUser currentUser={currentUser} { ...this.props } />
+          }}  />
           {/* <Route exact path='' component={} /> */}
         </Switch>  
       </div>
@@ -34,7 +36,7 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({currentUser}) => {
+const mapStateToProps = ({ currentUser }) => {
   return ({
     loggedIn: !!currentUser,
     currentUser
