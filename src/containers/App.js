@@ -9,6 +9,7 @@ import ProfilePage from './ProfilePage.js';
 import Home from './Home';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import CharacterCard from '../components/CharacterCard';
+import { EditCurrentUser } from '../components/EditCurrentUser';
 class App extends React.Component {
 
   componentDidMount() {
@@ -16,7 +17,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn } = this.props   
+    const { loggedIn } = this.props
     return (
       <div className="App">  
         { loggedIn ? <NavBar location={this.props.location} /> : null }
@@ -25,7 +26,7 @@ class App extends React.Component {
           <Route exact path='/characters/:name' component={ CharacterCard } />
           <Route exact path='/login' component={ Login } />
           <Route exact path='/signup' component={ Signup } />
-          {/* <Route exact path='' component={} /> */}
+          <Route exact path={`/users/:name/edit`} component={ EditCurrentUser} { ...this.props } />
           {/* <Route exact path='' component={} /> */}
         </Switch>  
       </div>
@@ -33,9 +34,10 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({currentUser}) => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!currentUser,
+    currentUser
   })
 }
 
