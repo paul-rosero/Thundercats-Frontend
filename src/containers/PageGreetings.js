@@ -26,4 +26,11 @@ export const profileGreetings = (currentUser) => {
     )
 }
 
-
+export const editGreetings = () => {
+    return (
+        <div className="edit-greeting">
+            <h3>Edit your information here.</h3>
+            <h5>Fix any mistakes or changes here.</h5>
+        </div>
+    )
+}
