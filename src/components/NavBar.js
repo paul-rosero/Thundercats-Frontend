@@ -10,7 +10,7 @@ const NavBar = ({ currentUser, loggedIn }) => {
        <div className="navbar" >
            {/* <NavLink exact to="/fav-characters">Fav Characters</NavLink> */}
            <NavLink exact to={{
-               pathname: `/users/${currentUser.id}/edit`,
+               pathname: `/users/${currentUser.attributes.name}/edit`,
                state: currentUser
             }} >Update My Info</NavLink>
            {loggedIn ? <Logout/> : null}
