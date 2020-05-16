@@ -4,11 +4,20 @@ import { updateEditForm, edit } from '../actions/editForm';
 import { editGreetings } from '../containers/PageGreetings'
 
 
-export class EditCurrentUser extends Component {
+class EditCurrentUser extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target
-        updateEditForm(name, value)
+        const { editForm } = this.props
+        console.log('this.props', this.props)
+        console.log('name', name)
+        console.log('value', value)
+        const updatedFormInfo = {
+            ...editForm,
+            [name]: value
+        }
+        console.log('updateEditForm(updatedFormInfo)', updateEditForm(updatedFormInfo))
+        updateEditForm(updatedFormInfo)
     }
 
     // handleSubmit = (formData) => {
@@ -19,8 +28,9 @@ export class EditCurrentUser extends Component {
     //     }, history)
     //   }
 
-    render(edit) {
-        
+    render(state) {
+        console.log('state', state)
+        // const { name, username, email } = this.state.editForm
         return (
             <div className="edit-form">
                 { editGreetings() }
@@ -41,9 +51,11 @@ export class EditCurrentUser extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    console.log('state', state)
-    // return { editForm }
+const mapStateToProps = state => {
+    return {
+        editForm: state.editForm,
+        currentUser: state.currentUser
+    }
 }
 
 export default connect(mapStateToProps, { updateEditForm, edit })(EditCurrentUser)
