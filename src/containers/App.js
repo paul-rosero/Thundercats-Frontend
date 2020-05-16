@@ -9,7 +9,7 @@ import ProfilePage from './ProfilePage.js';
 import Home from './Home';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import CharacterCard from '../components/CharacterCard';
-import { EditCurrentUser } from '../components/EditCurrentUser';
+import EditCurrentUser from '../components/EditCurrentUser';
 class App extends React.Component {
 
   componentDidMount() {
