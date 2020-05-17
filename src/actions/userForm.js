@@ -12,8 +12,7 @@ export const setFormDataForEdit = currentUser => {
     const userFormData = {
       name: currentUser.attributes.name,
       email: currentUser.attributes.email,
-      username: currentUser.attributes.username,
-      password: currentUser.attributes.password
+      username: currentUser.attributes.username
     }
     return {
       type: "SET_FORM_DATA_FOR_EDIT",
