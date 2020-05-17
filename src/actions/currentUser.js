@@ -1,5 +1,5 @@
 import { resetLoginForm } from './loginForm.js';
-import { resetSignupForm } from './signupForm.js';
+import { resetUserForm } from './userForm.js';
 import { getMyChars } from './characters'
 
 //stateless component1
@@ -38,7 +38,7 @@ export const signup = (signupData, history) => {
         else {
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
-            dispatch(resetSignupForm())
+            dispatch(resetUserForm())
             history.push(`/users/${user.data.attributes.name}`)
         }
     }
@@ -83,6 +83,32 @@ export const getCurrentUser = () => {
         else {
             dispatch(setCurrentUser(user.data));
             dispatch(getMyChars());
+        }
+    }
+}
+
+export const edit = (userData, history) => {
+    console.log('userData', userData)
+    return async dispatch => {
+        const userData ={
+            currentUser: userData
+        } 
+        const res = await fetch(`http://localhost:3001/api/v1/users/${userData.name}`, {
+            credentials: "include",
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userData)
+        })
+        const user = await res.json()
+        if (user.error) {
+            alert(user.error)
+        }
+        else {
+            dispatch(setCurrentUser(user.data))
+            // dispatch(resetSignupForm())
+            history.push(`/users/${user.data.attributes.name}`)
         }
     }
 }
