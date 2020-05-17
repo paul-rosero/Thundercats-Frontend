@@ -11,6 +11,13 @@ export const setCurrentUser = user => {
     }
 }
 
+export const updatedCurrentUser = user => {
+    return {
+        type: 'UPDATED_CURRENT_USER',
+        user
+    }
+}
+
 export const clearCurrentUser = () => {
     return {
         type: "CLEAR_CURRENT_USER",
@@ -87,10 +94,10 @@ export const getCurrentUser = () => {
     }
 }
 
-export const edit = (userData, history) => {
+export const editCurrentUser = (userData, history) => {
     console.log('userData', userData)
     return async dispatch => {
-        const userData ={
+        const currentUserData = {
             currentUser: userData
         } 
         const res = await fetch(`http://localhost:3001/api/v1/users/${userData.name}`, {
@@ -99,15 +106,14 @@ export const edit = (userData, history) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(userData)
+            body: JSON.stringify(currentUserData)
         })
         const user = await res.json()
         if (user.error) {
             alert(user.error)
         }
         else {
-            dispatch(setCurrentUser(user.data))
-            // dispatch(resetSignupForm())
+            dispatch(updatedCurrentUser(user.data))
             history.push(`/users/${user.data.attributes.name}`)
         }
     }

@@ -40,9 +40,10 @@ const UserForm = ({formData, updateUserForm, handleOnSubmit, editMode }) => {
     )
 }
 
-const mapStateToProps = ({ userForm }) => {
+const mapStateToProps = ({ userForm, currentUser }) => {
     return { 
-        formData: userForm
+        formData: userForm,
+        currentUser
      }
 }
 

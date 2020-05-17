@@ -7,7 +7,9 @@ import UserForm from './UserForm.js';
 const Signup = ({ signup, history }) => {
 
     const handleOnSubmit = formData => {
-        signup({ ...formData }, history)
+        signup({
+            ...formData
+            }, history)
     }
    
     return (

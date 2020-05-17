@@ -1,61 +1,46 @@
 import React, { Component } from 'react';
+import UserForm from './UserForm';
 import { connect } from 'react-redux';
-import { updateEditForm, edit } from '../actions/editForm';
+import { editCurrentUser } from '../actions/currentUser';
+import { setFormDataForEdit } from '../actions/userForm';
 import { editGreetings } from '../containers/PageGreetings'
 
-
 class EditCurrentUser extends Component {
+    componentDidMount(){
+        console.log('this.props.mount', this.props)
+        console.log('currentUser', this.props.location.state)
+        this.props.currentUser && this.props.setFormDataForEdit(this.props.currentUser)
+      }
+    
+      componentDidUpdate(prevProps) {
+        this.props.currentUser && !prevProps.currentUser && this.props.setFormDataForEdit(this.props.currentUser)
+      }
 
-    handleInputChange = event => {
-        const { name, value } = event.target
-        const { editForm } = this.props
-        console.log('this.props', this.props)
-        console.log('name', name)
-        console.log('value', value)
-        const updatedFormInfo = {
-            ...editForm,
-            [name]: value
-        }
-        console.log('updateEditForm(updatedFormInfo)', updateEditForm(updatedFormInfo))
-        updateEditForm(updatedFormInfo)
-    }
-
-    // handleSubmit = (formData) => {
-    //     const { updateTrip, trip, history } = this.props
-    //     updateTrip({
-    //       ...formData,
-    //       tripId: trip.id
-    //     }, history)
+    //   componentWillUnmount() {
+    //     this.props.resetTripForm()
     //   }
 
-    render(state) {
-        console.log('state', state)
-        // const { name, username, email } = this.state.editForm
+    handleSubmit = formData => {
+        console.log('this.props', this.props)
+        const { editCurrentUser, currentUser, history } = this.props
+        editCurrentUser({
+          ...formData,
+          currentUser
+        }, history)
+      }
+
+    render() {
+        console.log('props', this.props)
+        // const { history, currentUser } = this.props
         return (
             <div className="edit-form">
                 { editGreetings() }
-                <form name="edit-form" /* onSubmit={handleOnSubmit} */>
-                    <label>Name: </label>
-                    <input name="name" type="text" value={this.name} onChange={this.handleInputChange} /><br/>
-
-                    <label>Email: </label>
-                    <input name="email" type="text" value={this.email} onChange={this.handleInputChange} /><br/>
-
-                    <label>Username: </label>
-                    <input name="username" type="text" value={this.username} onChange={this.handleInputChange} /><br/>
-
-                    <input type="submit" value="Edit" />
-                </form>
+                <UserForm editMode handleOnSubmit={this.handleOnSubmit} />
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        editForm: state.editForm,
-        currentUser: state.currentUser
-    }
-}
 
-export default connect(mapStateToProps, { updateEditForm, edit })(EditCurrentUser)
+
+export default connect(null, { setFormDataForEdit, editCurrentUser })(EditCurrentUser)

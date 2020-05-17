@@ -9,6 +9,9 @@ export default (state = null, action) => {
                     characters: action.characters
                 } 
             }
+        case 'UPDATED_CURRENT_USER' :
+            console.log('state', state)
+            return
         case "CLEAR_CURRENT_USER" :
             return null
         default :

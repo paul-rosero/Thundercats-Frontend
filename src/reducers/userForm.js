@@ -13,6 +13,8 @@ export default (state = initialState, action) => {
                 [action.formData.name]: action.formData.value 
             }
             return res
+        case "SET_FORM_DATA_FOR_EDIT":
+            return action.userFormData
         case "RESET_USER_FORM" :
             return initialState
         default :
