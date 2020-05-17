@@ -7,8 +7,6 @@ import { editGreetings } from '../containers/PageGreetings'
 
 class EditCurrentUser extends Component {
     componentDidMount(){
-        console.log('this.props.mount', this.props)
-        console.log('currentUser', this.props.location.state)
         this.props.currentUser && this.props.setFormDataForEdit(this.props.currentUser)
       }
     
@@ -21,7 +19,6 @@ class EditCurrentUser extends Component {
     //   }
 
     handleSubmit = formData => {
-        console.log('this.props', this.props)
         const { editCurrentUser, currentUser, history } = this.props
         editCurrentUser({
           ...formData,
@@ -31,7 +28,7 @@ class EditCurrentUser extends Component {
 
     render() {
         console.log('props', this.props)
-        // const { history, currentUser } = this.props
+        // const { history } = this.props
         return (
             <div className="edit-form">
                 { editGreetings() }
