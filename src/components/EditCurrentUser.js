@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import UserForm from './UserForm';
 import { connect } from 'react-redux';
 import { editCurrentUser } from '../actions/currentUser';
-import { setFormDataForEdit } from '../actions/userForm';
+import { setFormDataForEdit, resetUserForm } from '../actions/userForm';
 import { editGreetings } from '../containers/PageGreetings'
 
 class EditCurrentUser extends Component {
     componentDidMount(){
-        this.props.currentUser && this.props.setFormDataForEdit(this.props.currentUser)
+        const { currentUser, setFormDataForEdit } = this.props
+        currentUser && setFormDataForEdit(currentUser)
       }
     
       componentDidUpdate(prevProps) {
-        this.props.currentUser && !prevProps.currentUser && this.props.setFormDataForEdit(this.props.currentUser)
+        const { currentUser, setFormDataForEdit } = this.props
+        currentUser && !prevProps.currentUser && setFormDataForEdit(currentUser)
       }
 
-    //   componentWillUnmount() {
-    //     this.props.resetTripForm()
-    //   }
+      componentWillUnmount() {
+        const { resetUserForm } =this.props
+        resetUserForm()
+      }
 
     handleSubmit = formData => {
         const { editCurrentUser, currentUser, history } = this.props
@@ -27,8 +30,8 @@ class EditCurrentUser extends Component {
       }
 
     render() {
-        console.log('props', this.props)
-        // const { history } = this.props
+        console.log('this', this)
+        const { history, currentUser } = this.props
         return (
             <div className="edit-form">
                 { editGreetings() }
@@ -40,4 +43,4 @@ class EditCurrentUser extends Component {
 
 
 
-export default connect(null, { setFormDataForEdit, editCurrentUser })(EditCurrentUser)
+export default connect(null, { resetUserForm, setFormDataForEdit, editCurrentUser })(EditCurrentUser)
