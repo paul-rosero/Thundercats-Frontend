@@ -24,6 +24,13 @@ export const clearCurrentUser = () => {
     }
 }
 
+export const deletedUser = currentUser => {
+    return {
+      type: "DELETE_CURRENT_USER",
+      currentUser
+    }
+  }
+
 //asynchronous action creators
 export const signup = (signupData, history) => {
     return async dispatch => {
@@ -95,7 +102,6 @@ export const getCurrentUser = () => {
 }
 
 export const editCurrentUser = (userData, history) => {
-    console.log('userData', userData)
     return async dispatch => {
         const currentUserData = {
             currentUser: userData
@@ -126,5 +132,27 @@ export const logout = () => {
             credentials: "include",
             method: "DELETE"
         });
+    }
+}
+
+export const deleteCurrentUser = (currentUser, history) => {
+    return async dispatch => {
+      const r = await fetch(`http://localhost:3001/api/v1/users/${currentUser.id}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        const resp = await r.json();
+        if (resp.error) {
+            alert(resp.error);
+        }
+        else {
+            dispatch(deletedUser(currentUser));
+            dispatch(clearCurrentUser());
+            alert(resp.data);
+            history.push(`/`);
+        }
     }
 }
