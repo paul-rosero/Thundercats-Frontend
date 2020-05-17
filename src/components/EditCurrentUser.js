@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserForm from './UserForm';
 import { connect } from 'react-redux';
-import { editCurrentUser } from '../actions/currentUser';
+import { editCurrentUser, deleteCurrentUser } from '../actions/currentUser';
 import { setFormDataForEdit, resetUserForm } from '../actions/userForm';
 import { editGreetings } from '../containers/PageGreetings'
 
@@ -30,17 +30,15 @@ class EditCurrentUser extends Component {
       }
 
     render() {
-        console.log('this', this)
-        const { history, currentUser } = this.props
+        const { history, deleteCurrentUser, currentUser } = this.props
         return (
             <div className="edit-form">
                 { editGreetings() }
                 <UserForm editMode handleOnSubmit={this.handleOnSubmit} />
+                <button style={{color: "red"}} onClick={()=>deleteCurrentUser(currentUser, history)}>Delete Account</button>
             </div>
         )
     }
 }
 
-
-
-export default connect(null, { resetUserForm, setFormDataForEdit, editCurrentUser })(EditCurrentUser)
+export default connect(null, { resetUserForm, setFormDataForEdit, editCurrentUser, deleteCurrentUser })(EditCurrentUser)
