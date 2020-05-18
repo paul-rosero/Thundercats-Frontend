@@ -102,11 +102,16 @@ export const getCurrentUser = () => {
 }
 
 export const editCurrentUser = (userData, history) => {
+    console.log('userData', userData)
     return async dispatch => {
         const currentUserData = {
-            currentUser: userData
+            name: userData.attributes.name,
+            email: userData.attributes.email,
+            username: userData.attributes.username,
+            password: userData.attributes.password
         } 
-        const res = await fetch(`http://localhost:3001/api/v1/users/${userData.name}`, {
+        const userDataId = userData.id
+        const res = await fetch(`http://localhost:3001/api/v1/users/${userDataId}`, {
             credentials: "include",
             method: 'PATCH',
             headers: {
@@ -115,6 +120,7 @@ export const editCurrentUser = (userData, history) => {
             body: JSON.stringify(currentUserData)
         })
         const user = await res.json()
+        console.log('user.data', user.data)
         if (user.error) {
             alert(user.error)
         }
