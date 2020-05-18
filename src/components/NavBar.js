@@ -9,7 +9,8 @@ const NavBar = ({ currentUser, loggedIn }) => {
     return (
        <div className="navbar" >
            {/* <NavLink exact to="/fav-characters">Fav Characters</NavLink> */}
-           <NavLink exact to={{
+           <NavLink exact activeClassName="active" to={`/users/${currentUser.attributes.name}`} >Profile Page</NavLink>
+           <NavLink exact activeClassName="active" to={{
                pathname: `/users/${currentUser.attributes.name}/edit`,
                state: currentUser
             }} >Update My Info</NavLink>
