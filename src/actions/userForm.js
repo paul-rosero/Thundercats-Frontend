@@ -1,5 +1,4 @@
 //synchronous action creators
-//stateless component3
 export const updateUserForm = (name, value) => {
     const formData = { name, value }
     return {
