@@ -6,7 +6,8 @@ import UserForm from './UserForm.js';
 
 const Signup = ({ signup, history }) => {
 
-    const handleOnSubmit = formData => {
+    const handleOnSubmit = (event, formData) => {
+        event.preventDefault()
         signup({
             ...formData
             }, history)
