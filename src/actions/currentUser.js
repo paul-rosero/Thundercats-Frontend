@@ -11,10 +11,10 @@ export const setCurrentUser = user => {
     }
 }
 
-export const updatedCurrentUser = user => {
+export const updatedCurrentUser = currentUser => {
     return {
         type: 'UPDATED_CURRENT_USER',
-        user
+        currentUser
     }
 }
 
@@ -102,15 +102,14 @@ export const getCurrentUser = () => {
 }
 
 export const editCurrentUser = (userData, history) => {
-    console.log('userData', userData)
     return async dispatch => {
         const currentUserData = {
-            name: userData.attributes.name,
-            email: userData.attributes.email,
-            username: userData.attributes.username,
-            password: userData.attributes.password
+            name: userData.name,
+            email: userData.email,
+            username: userData.username,
+            password: userData.password
         } 
-        const userDataId = userData.id
+        const userDataId = userData.currentUser.id
         const res = await fetch(`http://localhost:3001/api/v1/users/${userDataId}`, {
             credentials: "include",
             method: 'PATCH',
@@ -120,7 +119,6 @@ export const editCurrentUser = (userData, history) => {
             body: JSON.stringify(currentUserData)
         })
         const user = await res.json()
-        console.log('user.data', user.data)
         if (user.error) {
             alert(user.error)
         }
