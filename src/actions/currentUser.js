@@ -2,7 +2,6 @@ import { resetLoginForm } from './loginForm.js';
 import { resetUserForm } from './userForm.js';
 import { getMyChars } from './characters'
 
-//stateless component1
 //synchronous action creators
 export const setCurrentUser = user => {
     return {
