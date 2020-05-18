@@ -21,13 +21,12 @@ class EditCurrentUser extends Component {
         resetUserForm()
       }
 
-    handleSubmit = ( formData, EditCurrentUser ) => {
-        
+    handleOnSubmit = (event, formData ) => {
+        event.preventDefault()
         const { editCurrentUser, currentUser, history } = this.props
-        console.log('currentUser', currentUser)
         editCurrentUser({
           ...formData,
-          currentUserId: currentUser.id
+          currentUser
         }, history)
       }
 
@@ -36,10 +35,8 @@ class EditCurrentUser extends Component {
         return (
             <div className="edit-form">
                 { editGreetings() }
-                <UserForm editMode handleOnSubmit={event => {
-                    event.preventDefault()
-                    this.handleOnSubmit() 
-                }} />
+                <UserForm editMode handleOnSubmit={this.handleOnSubmit 
+                } />
                 <button style={{color: "red"}} onClick={()=>deleteCurrentUser(currentUser, history)}>Delete Account</button>
             </div>
         )
