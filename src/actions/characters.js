@@ -7,7 +7,6 @@ export const setMyChars = characters => {
 }
 
 //asynchronous actions 
-
 export const getMyChars = () => {
     return async dispatch => {
         const charRes = await fetch("http://localhost:3001/api/v1/characters", {
@@ -19,6 +18,5 @@ export const getMyChars = () => {
         })
         const response = await charRes.json()
         dispatch(setMyChars(response.data))
-        
     }
 }
