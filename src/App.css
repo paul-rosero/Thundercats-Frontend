@@ -37,6 +37,10 @@
   flex-direction: column;
 }
 
+.active {
+  color: royalblue;
+}
+
 .characters-picture-table {
   column-count: auto;
   column-width: 8rem;
