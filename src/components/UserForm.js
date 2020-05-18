@@ -2,24 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateUserForm } from '../actions/userForm.js'
 
-const UserForm = ({formData, updateUserForm, handleOnSubmit, editMode }) => {
+const UserForm = ({formData, updateUserForm, currentUser, handleOnSubmit, editMode }) => {
     const { name, username, email, password } = formData
 
     const handleInputChange = event => {
         const { name, value } = event.target
-        // const updatedFormInfo = {
-        //     ...userForm,
-        //     [name]: value
-        // }
-        // updateSignupForm(updatedFormInfo)
         updateUserForm(name, value)
     }
 
     return (
-        <form onSubmit={ event => { 
-            event.preventDefault() 
-            handleOnSubmit(formData) 
-        }}>
+        <form onSubmit={ event => { handleOnSubmit(formData) }}>
 
             <label>Name: </label>
             <input name="name" type="text" value={ name } onChange={ handleInputChange } /><br/>
