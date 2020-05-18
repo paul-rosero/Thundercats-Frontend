@@ -11,7 +11,7 @@ const UserForm = ({formData, updateUserForm, currentUser, handleOnSubmit, editMo
     }
 
     return (
-        <form onSubmit={ event => { handleOnSubmit(formData) }}>
+        <form onSubmit={ event => { handleOnSubmit(event, formData) }}>
 
             <label>Name: </label>
             <input name="name" type="text" value={ name } onChange={ handleInputChange } /><br/>
