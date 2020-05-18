@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { signup } from '../actions/currentUser.js'
 import { signupGreetings } from '../containers/PageGreetings.js';
 import UserForm from './UserForm.js';
+import { Link } from 'react-router-dom'
+
 
 const Signup = ({ signup, history }) => {
 
@@ -17,6 +19,7 @@ const Signup = ({ signup, history }) => {
         <div className="signup-form">
             { signupGreetings() }
             <UserForm history={history} handleOnSubmit={handleOnSubmit} />
+            <p>or <Link to='/login'>Login</Link> if you already have an account.</p>
         </div>
     )
 }
