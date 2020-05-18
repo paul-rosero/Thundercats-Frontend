@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { editCurrentUser, deleteCurrentUser } from '../actions/currentUser';
 import { setFormDataForEdit, resetUserForm } from '../actions/userForm';
 import { editGreetings } from '../containers/PageGreetings'
-
 class EditCurrentUser extends Component {
     componentDidMount(){
         const { currentUser, setFormDataForEdit } = this.props
