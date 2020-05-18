@@ -10,7 +10,6 @@ export default (state = null, action) => {
                 } 
             }
         case 'UPDATED_CURRENT_USER' :
-            console.log('action.update', action)
             return action.currentUser
         case "CLEAR_CURRENT_USER" :
             return null
