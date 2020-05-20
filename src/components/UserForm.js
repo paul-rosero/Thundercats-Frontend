@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { updateUserForm } from '../actions/userForm.js'
 
-const UserForm = ({formData, updateUserForm, currentUser, handleOnSubmit, editMode }) => {
+const UserForm = ({formData, updateUserForm, handleOnSubmit, editMode }) => {
     const { name, username, email, password } = formData
 
     const handleInputChange = event => {
@@ -32,10 +32,9 @@ const UserForm = ({formData, updateUserForm, currentUser, handleOnSubmit, editMo
     )
 }
 
-const mapStateToProps = ({ userForm, currentUser }) => {
+const mapStateToProps = ({ userForm }) => {
     return { 
         formData: userForm,
-        currentUser
      }
 }
 
