@@ -17,23 +17,24 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn, currentUser } = this.props
+    const { loggedIn } = this.props
     return (
       <div className="App">  
-        { loggedIn ? <NavBar location={this.props.location} /> : null }
         { !loggedIn ?  
-          <>
+          <Switch>
             <Route exact path='/' component={ Home }/>
             <Route exact path='/login' component={ Login } />
             <Route exact path='/signup' component={ Signup } />
-          </>
-          :  <Route exact path='/users/:name' render={(props) => <ProfilePage currentUser={currentUser} { ...props } />
-        } /> }
+          </Switch>
+        :  
+            <>
+              <NavBar location={this.props.location} />
+              <Route exact path='/users/:name' component={ ProfilePage } />
+            </>
+        }
         <Switch>
           <Route exact path='/characters/:name' component={ CharacterCard } />
-         
-          <Route exact path='/users/:name/edit' render={(props) => <EditCurrentUser currentUser={currentUser} { ...props } />
-          }  />
+          <Route exact path='/users/:name/edit' component={ EditCurrentUser } />
         </Switch>  
       </div>
     )
@@ -42,8 +43,7 @@ class App extends React.Component {
 
 const mapStateToProps = ({ currentUser }) => {
   return ({
-    loggedIn: !!currentUser,
-    currentUser
+    loggedIn: !!currentUser
   })
 }
 
