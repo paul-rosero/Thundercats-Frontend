@@ -35,10 +35,14 @@ class EditCurrentUser extends Component {
             <div className="edit-form">
                 { editGreetings() }
                 <UserForm editMode handleOnSubmit={ this.handleOnSubmit } />
-                <button style={{color: "red"}} onClick={()=>deleteCurrentUser(currentUser, history)}>Delete Account</button>
+                <button style={{ color: "red" }} onClick={()=>deleteCurrentUser(currentUser, history)}>Delete Account</button>
             </div>
         )
     }
 }
 
-export default connect(null, { resetUserForm, setFormDataForEdit, editCurrentUser, deleteCurrentUser })(EditCurrentUser)
+const mapStateToProps = ({ currentUser }) => {
+  return { currentUser }
+}
+
+export default connect(mapStateToProps, { resetUserForm, setFormDataForEdit, editCurrentUser, deleteCurrentUser })(EditCurrentUser)
