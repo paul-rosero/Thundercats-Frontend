@@ -1,7 +1,5 @@
 //stateless component 6
 import React from 'react';
-// import Login from '../components/Login';
-// import Logout from '../components/Logout'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
