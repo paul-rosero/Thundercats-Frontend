@@ -46,11 +46,12 @@
 }
 
 .characters-picture-table {
-  column-count: auto;
-  column-width: 8rem;
-  border-spacing: 0px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
   background: rgb(134, 27, 27);
-  width: 100%;
+  grid-gap: 1rem;
+ float: unset;
 }
 
 .characters-picture-container {
