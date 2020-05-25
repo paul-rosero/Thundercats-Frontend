@@ -4,7 +4,7 @@ import { Link} from 'react-router-dom'
 const CharHeadshots = ({currentUser}) => {
     return (         
         <div className="characters-picture">
-            <ul className="ul">
+            <ul>
                 <li>
                     <Link to={{
                         pathname: '/characters/jaga',
