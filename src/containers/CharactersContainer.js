@@ -7,9 +7,7 @@ const Characters = ({characters}) => {
     const charCard = characters.map(character => <CharacterCard key={character.id} character={character} />) 
     
     return (
-        <div className="Characters">
-           { charCard }
-        </div>
+        { charCard }
     )
 }
 
