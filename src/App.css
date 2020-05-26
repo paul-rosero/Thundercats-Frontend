@@ -1,6 +1,6 @@
 .App {
   text-align: center; 
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 
 /* .App-logo {
@@ -46,16 +46,14 @@
   color: royalblue;
 }
 
-.characters-picture {
-  margin-bottom: px;
-  background: rgb(134, 27, 27);
-}
-
-.ul { 
-  grid-gap: 1rem;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
+.characters-picture ul{
   display: grid;
   list-style-type: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  background: rgb(134, 27, 27);
+  grid-gap: 1rem;
 }
+
+
 
