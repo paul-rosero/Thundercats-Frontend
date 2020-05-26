@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import CharacterCard from '../components/CharacterCard'
 
 const Characters = (props) => {
-
-    const charCard = props.characters.find(character => character.id === props.location.state.characters.id )
+    const charCard = props.characters.find(character => character.id === props.location.state.character.id )
 
     if (props.characters.length > 0) {
         return(
