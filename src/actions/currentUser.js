@@ -4,6 +4,10 @@ import { getMyChars } from './characters'
 
 //synchronous action creators
 export const setCurrentUser = user => {
+    delete user.relationships.characters
+    user.relationships = {
+        characters: []
+    }
     return {
         type: 'SET_CURRENT_USER',
         user
