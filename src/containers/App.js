@@ -31,6 +31,7 @@ class App extends React.Component {
               <NavBar location={this.props.location} />
               <Route exact path='/users/:name' component={ ProfilePage } />
               <Route exact path='/characters/:name' component={ CharactersContainer } />
+              {/* <Route exact path='/characters/:name' render={props => <CharactersContainer currentUser={currentUser} {...props} />} /> */}
               <Route exact path='/users/:name/edit' component={ EditCurrentUser } />
             </>
         } 
