@@ -1,20 +1,20 @@
 //stateless component 2
 import React from 'react';
 import { connect } from 'react-redux';
-import CharacterCard from './CharacterCard'
+import CharacterCard from '../components/CharacterCard'
 
-const Characters = ({characters}) => {
-    const charCard = characters.map(character => <CharacterCard key={character.id} character={character} />) 
+const Characters = ({ characters }) => {
+    const charCard = characters.find(character => character.id === props.location.state.characters.id )
     
     return (
-        { charCard }
+        <CharacterCard key={ charCard.id } character={ charCard } /> 
     )
 }
 
-const mapStateToProps = ({currentUser}) => {
+const mapStateToProps = ({ currentUser }) => {
     return {
         characters: currentUser.relationships.characters
     }
 }
 
-export default connect(mapStateToProps,)(Characters);
+export default connect(mapStateToProps)(Characters);
