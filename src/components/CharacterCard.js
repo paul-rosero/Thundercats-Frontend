@@ -1,14 +1,14 @@
 import React from 'react';
 
-const CharacterCard = ({location}) => {
-    return (
+const CharacterCard = ({ character }) => {
+  return (
       <div className="CharacterCard">
-        <p>Name: {location.state.characters.attributes.name}</p>
-        <p>Favorite: </p>
-        <p>Gender: {location.state.characters.attributes.gender}</p>
-        <p>Species: {location.state.characters.attributes.species}</p>
-        <p>Weapon(s): {location.state.characters.attributes.weapons}</p>        
-        <p>Overview: {location.state.characters.attributes.overview}</p>
+        <p>Name: { character.attributes.name }</p>
+        <p>Affiliation: { character.attributes.afiliation.name }</p>
+        <p>Gender: { character.attributes.gender }</p>
+        <p>Species: { character.attributes.species }</p>
+        <p>Weapon(s): { character.attributes.weapons }</p>        
+        <p>Overview: { character.attributes.overview }</p>
       </div>
     )    
 }
