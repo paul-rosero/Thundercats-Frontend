@@ -3,21 +3,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CharacterCard from '../components/CharacterCard'
 
-const Characters = (state) => {
-    console.log('state2', state)
-    const charCard = 
-        // characters.length > 0 ? 
-            state.characters.find(character => character.id === state.location.state.characters.id )
-        // : null
-    // console.log('charCard', charCard)
-    
-    return (
-        <CharacterCard key={ charCard.id } character={ charCard } /> 
-    )
+const Characters = (props) => {
+
+    const charCard = props.characters.find(character => character.id === props.location.state.characters.id )
+
+    if (props.characters.length > 0) {
+        return(
+             <CharacterCard key={ charCard.id } character={ charCard } /> 
+        )
+    } else {
+       return null
+    }  
 }
 
 const mapStateToProps = ( state ) => {
-    console.log('state', state)
     return {
         characters: state.currentUser.relationships.characters
     }
