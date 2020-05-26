@@ -8,7 +8,7 @@ import Signup from '../components/Signup';
 import ProfilePage from './ProfilePage.js';
 import Home from './Home';
 import { Route, Switch, withRouter } from 'react-router-dom'
-import CharacterCard from '../components/CharacterCard';
+import CharactersContainer from './CharactersContainer'
 import EditCurrentUser from '../components/EditCurrentUser';
 class App extends React.Component {
 
@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn } = this.props
+    const { loggedIn, currentUser } = this.props
     return (
       <div className="App">  
         { !loggedIn ?  
@@ -30,12 +30,10 @@ class App extends React.Component {
             <>
               <NavBar location={this.props.location} />
               <Route exact path='/users/:name' component={ ProfilePage } />
+              <Route exact path='/characters/:name' component={ CharactersContainer } />
+              <Route exact path='/users/:name/edit' component={ EditCurrentUser } />
             </>
-        }
-        <Switch>
-          <Route exact path='/characters/:name' component={ CharacterCard } />
-          <Route exact path='/users/:name/edit' component={ EditCurrentUser } />
-        </Switch>  
+        } 
       </div>
     )
   }
