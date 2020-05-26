@@ -1,4 +1,17 @@
-export default (state = null, action) => {
+const initialState = {
+    id: "",
+    type: "",
+    attributes: {
+        name: "",
+        username: "",
+        email: ""
+    },
+    relationships: {
+        favorites: [],
+        characters: []
+    }
+}
+export default (state = initialState, action) => {
     switch(action.type) {
         case "SET_CURRENT_USER" :
             return action.user
@@ -12,7 +25,7 @@ export default (state = null, action) => {
         case 'UPDATED_CURRENT_USER' :
             return action.currentUser
         case "CLEAR_CURRENT_USER" :
-            return null
+            return initialState
         case "DELETE_CURRENT_USER" :
             return action.currentUser
         default :
