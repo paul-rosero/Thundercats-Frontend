@@ -1,17 +1,21 @@
 import React from 'react'
 import { Link} from 'react-router-dom'
 
-const CharHeadshots = ({currentUser}) => {
+const CharHeadshots = ({ currentUser, characters }) => {
+    console.log('characters', characters)
+    const mappedChars = characters.map(character => <Link character={character}/> )
+    console.log('mappedChars', mappedChars)
     return (         
         <div className="characters-picture">
             <ul>
                 <li>
+                    {/* { mappedChars } */}
                     <Link to={{
                         pathname: '/characters/jaga',
                         state: {characters: currentUser.relationships.characters[0]}
                     }}><img key="jaga" src={process.env.PUBLIC_URL + '/character_images/jaga.jpg'} alt="jaga" /></Link> 
                 </li>  
-                <li>
+                {/* <li>
                     <Link to={{
                         pathname:'/characters/lion-o', 
                         state: {characters: currentUser.relationships.characters[1]}
@@ -148,7 +152,7 @@ const CharHeadshots = ({currentUser}) => {
                         pathname: '/characters/chilla',
                         state: {characters: currentUser.relationships.characters[23]}
                     }}><img key="chilla" src={process.env.PUBLIC_URL + '/character_images/chilla.jpg'} alt="chilla" /></Link> 
-                </li> 
+                </li>  */}
             </ul>
         </div>   
     )
