@@ -13,7 +13,7 @@ export const loginGreetings = () => {
     return (
         <div className="login-greeting">
             <h3>Welcome back to Third Earth!</h3>
-            <h5>Please Sign in to enter.</h5>
+            <h5>Please Login to enter.</h5>
         </div>
     )
 }
