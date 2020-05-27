@@ -15,6 +15,10 @@ export const setCurrentUser = user => {
 }
 
 export const updatedCurrentUser = currentUser => {
+    delete currentUser.relationships.characters
+    currentUser.relationships = {
+        characters: []
+    }
     return {
         type: 'UPDATED_CURRENT_USER',
         currentUser
@@ -106,12 +110,6 @@ export const getCurrentUser = () => {
 
 export const editCurrentUser = (userData, history) => {
     return async dispatch => {
-        const currentUserData = {
-            name: userData.name,
-            email: userData.email,
-            username: userData.username,
-            password: userData.password
-        } 
         const userDataId = userData.currentUser.id
         const res = await fetch(`http://localhost:3001/api/v1/users/${userDataId}`, {
             credentials: "include",
@@ -119,7 +117,7 @@ export const editCurrentUser = (userData, history) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(currentUserData)
+            body: JSON.stringify(userData)
         })
         const user = await res.json()
         if (user.error) {
@@ -127,6 +125,7 @@ export const editCurrentUser = (userData, history) => {
         }
         else {
             dispatch(updatedCurrentUser(user.data))
+            dispatch(getMyChars());
             history.push(`/users/${user.data.attributes.name}`)
         }
     }
