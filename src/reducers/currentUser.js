@@ -7,7 +7,6 @@ const initialState = {
         email: ""
     },
     relationships: {
-        favorites: [],
         characters: []
     }
 }
