@@ -17,7 +17,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { loggedIn, currentUser } = this.props
+    const { loggedIn } = this.props
+
     return (
       <div className="App">  
         { !loggedIn ?  
@@ -28,10 +29,9 @@ class App extends React.Component {
           </Switch>
         :  
             <>
-              <NavBar location={this.props.location} />
+              <NavBar location={ this.props.location } />
               <Route exact path='/users/:name' component={ ProfilePage } />
               <Route exact path='/characters/:name' component={ CharactersContainer } />
-              {/* <Route exact path='/characters/:name' render={props => <CharactersContainer currentUser={currentUser} {...props} />} /> */}
               <Route exact path='/users/:name/edit' component={ EditCurrentUser } />
             </>
         } 
@@ -40,9 +40,9 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => {
+const mapStateToProps = state => {
   return ({
-    loggedIn: !!currentUser
+    loggedIn: !!state.currentUser.id
   })
 }
 
