@@ -2,7 +2,6 @@ import React from 'react';
 import UserForm from './UserForm';
 import { connect } from 'react-redux';
 import { editCurrentUser, deleteCurrentUser } from '../actions/currentUser';
-import { setFormDataForEdit, resetUserForm } from '../actions/userForm';
 import { editGreetings } from '../containers/PageGreetings'
 
 const EditCurrentUser = ({ currentUser, deleteCurrentUser, editCurrentUser, history }) => {
@@ -30,4 +29,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { resetUserForm, setFormDataForEdit, editCurrentUser, deleteCurrentUser })(EditCurrentUser)
+export default connect(mapStateToProps, { editCurrentUser, deleteCurrentUser })(EditCurrentUser)
