@@ -22,8 +22,8 @@ const UserForm = ({formData, updateUserForm, handleOnSubmit, editMode }) => {
             <label>Username: </label>
             <input name="username" type="text" value={ username } onChange={ handleInputChange } /><br/>
 
-            <label>Password: </label>
-            <input name="password" type="text" value={ password } onChange={ handleInputChange } /><br />
+            { editMode ? null : <> <label>Password: </label>
+            <input name="password" type="text" value={ password } onChange={ handleInputChange } /><br /> </> }
 
             <input type="submit" value= { editMode ? "Update" : "Sign Up" } />
 
