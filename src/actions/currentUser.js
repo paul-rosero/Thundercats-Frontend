@@ -1,6 +1,6 @@
 import { resetLoginForm } from './loginForm.js';
-import { resetUserForm } from './userForm.js';
 import { getMyChars } from './characters'
+import { resetPasswordForm, resetUserForm, setFormDataForEdit } from './userForm.js';
 
 //synchronous action creators
 export const setCurrentUser = user => {
@@ -59,7 +59,7 @@ export const signup = (signupData, history) => {
         else {
             dispatch(setCurrentUser(user.data))
             dispatch(getMyChars())
-            dispatch(resetUserForm())
+            dispatch(resetPasswordForm(signupData))
             history.push(`/users/${user.data.attributes.name}`)
         }
     }
@@ -81,6 +81,7 @@ export const currentUserLogin = (loginData, history) => {
         }
         else {
             dispatch(setCurrentUser(user.data))
+            dispatch(setFormDataForEdit(user.data))
             dispatch(getMyChars())
             dispatch(resetLoginForm())
             history.push(`/users/${user.data.attributes.name}`)
@@ -134,6 +135,7 @@ export const editCurrentUser = (userData, history) => {
 export const logout = () => {
     return async dispatch => {
         dispatch(clearCurrentUser())
+        dispatch(resetUserForm())
         await fetch('http://localhost:3001/api/v1/logout', {
             credentials: "include",
             method: "DELETE"
