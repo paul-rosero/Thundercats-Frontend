@@ -81,7 +81,7 @@ export const currentUserLogin = (loginData, history) => {
         }
         else {
             dispatch(setCurrentUser(user.data))
-            dispatch(setFormDataForEdit(user.data))
+            dispatch(setFormDataForEdit(user.data));
             dispatch(getMyChars())
             dispatch(resetLoginForm())
             history.push(`/users/${user.data.attributes.name}`)
@@ -104,6 +104,7 @@ export const getCurrentUser = () => {
         }
         else {
             dispatch(setCurrentUser(user.data));
+            dispatch(setFormDataForEdit(user.data));
             dispatch(getMyChars());
         }
     }
@@ -159,6 +160,7 @@ export const deleteCurrentUser = (currentUser, history) => {
         else {
             dispatch(deletedUser(currentUser));
             dispatch(clearCurrentUser());
+            dispatch(resetUserForm());
             alert(resp.data);
             history.push(`/`);
         }
