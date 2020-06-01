@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link} from 'react-router-dom'
 import LikeButton from '../components/LikeButton'
+import { DisplayLikeHeart } from '../components/DisplayLikeHeart'
 
 const CharHeadshots = ({ characters }) => {
     const mappedChars = characters.map((character, index) => 
         <li key={ index }>
-           <Link 
+            <DisplayLikeHeart character={character} />
+            <Link 
                 to={{
                     pathname: `/characters/${character.attributes.name}`,
                     state: { character }
