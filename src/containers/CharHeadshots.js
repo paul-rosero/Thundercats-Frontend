@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link} from 'react-router-dom'
+import LikeButton from '../components/LikeButton'
 
 const CharHeadshots = ({ characters }) => {
     const mappedChars = characters.map((character, index) => 
@@ -10,6 +11,7 @@ const CharHeadshots = ({ characters }) => {
                     state: { character }
                 }}><img key={`${character.attributes.name}`} src={process.env.PUBLIC_URL + `/character_images/${character.attributes.name}.jpg`} alt={`${character.attributes.name}`} />
             </Link>  
+            <LikeButton character={character}/>
         </li>
     )
  
