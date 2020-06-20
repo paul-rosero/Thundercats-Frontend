@@ -6,6 +6,13 @@ export const setMyChars = characters => {
     }
 }
 
+export const setFavorite = character => {
+    return {
+        type: "SET_FAVORITE",
+        character
+    }
+}
+
 //asynchronous actions 
 export const getMyChars = () => {
     return async dispatch => {
