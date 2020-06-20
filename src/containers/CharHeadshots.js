@@ -5,7 +5,7 @@ import { DisplayLikeHeart } from '../components/DisplayLikeHeart'
 
 const CharHeadshots = ({ characters }) => {
     const mappedChars = characters.map((character, index) => 
-        <li key={ index }>
+        <li key={ index } className="character">
             <DisplayLikeHeart character={character} />
             <Link 
                 to={{
