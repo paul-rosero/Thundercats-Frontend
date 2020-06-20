@@ -1,6 +1,6 @@
 .App {
   text-align: center; 
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 }
 
 /* .App-logo {
@@ -55,5 +55,7 @@
   grid-gap: 1rem;
 }
 
-
+.character{
+  display: -moz-grid-group;
+}
 
