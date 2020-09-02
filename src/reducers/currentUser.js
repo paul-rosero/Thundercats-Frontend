@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
         case 'UPDATED_CURRENT_USER' :
             return action.currentUser
         case 'SET_FAVORITE' :
-            console.log('action', action)
+            return action.currentUser
         case "CLEAR_CURRENT_USER" :
             return initialState
         case "DELETE_CURRENT_USER" :
