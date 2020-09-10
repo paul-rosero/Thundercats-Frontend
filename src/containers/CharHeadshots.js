@@ -18,11 +18,9 @@ const CharHeadshots = ({ characters }) => {
     )
  
     return (         
-        <div className="characters-picture">
-            <ul>
-                { mappedChars }
-            </ul>
-        </div>   
+        <ul className="characters-picture">
+            { mappedChars }
+        </ul>
     )
 }
 
