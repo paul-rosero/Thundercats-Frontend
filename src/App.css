@@ -46,7 +46,7 @@
   color: royalblue;
 }
 
-.characters-picture ul{
+.characters-picture {
   display: grid;
   list-style-type: none;
   grid-template-columns: repeat(4, 1fr);
