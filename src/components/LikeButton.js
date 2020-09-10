@@ -1,14 +1,14 @@
 import React from 'react'
 
-const LikeButton = (props) => {
+const LikeButton = ({currentUser, character, setFavorite}) => {
     const handleOnClick = () => {
-       return props.character.attributes.favorite = !props.character.attributes.favorite
+       return character.attributes.favorite = !character.attributes.favorite
     }
 
     return (
         <>
             <div className="like-button" >
-                <button onClick={ handleOnClick } >{ props.character.attributes.favorite ? "UnLike Me" : "Like Me" }</button>
+                <button onClick={ handleOnClick } >{ character.attributes.favorite ? "UnLike Me" : "Like Me" }</button>
             </div>
         </>
     )
