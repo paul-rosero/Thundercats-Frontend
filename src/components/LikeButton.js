@@ -2,7 +2,12 @@ import React from 'react'
 
 const LikeButton = ({currentUser, character, setFavorite}) => {
     const handleOnClick = () => {
-       return character.attributes.favorite = !character.attributes.favorite
+        console.log(character)
+        setFavorite({...character,
+            attributes: {
+                ...character.attributes,
+                favorite: !character.attributes.favorite}
+        })
     }
 
     return (
